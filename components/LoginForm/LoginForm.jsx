@@ -9,11 +9,13 @@ const LoginForm = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
 
     const router = useRouter()
 
     const onLogin = async () => {
         setError("")
+        setSuccess("")
 
         if (!email || !password) {
             return setError("Please enter email and password")
@@ -29,16 +31,22 @@ const LoginForm = () => {
 
             const response = await axios.post(`${process.env.NEXT_PUBLIC_LOGIN_PORT}`, userData)
 
-            console.log(response)
+            console.log("Login response received", response)
 
-            if (response.status === 200) {
+            if (response.status === 200 || response.status === 201) {
                 cookie.set("token", response.data.token)
-                router.push("/")
+                setSuccess("Login successful! Redirecting...")
+                setError("")
+                setTimeout(() => router.push("/"), 1000)
+                return
+            } else {
+                console.log("Login failed with status:", response.status)
+                setError("Login failed, try again please.")
             }
 
         } catch (error) {
             console.error("Error logging in:", error.response ? error.response.data : error.message)
-            console.log("Login response received", response)
+            setError("Login failed, try again please.")
         }
     }
 
@@ -59,9 +67,12 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />
-                <button onClick={onLogin}>Login</button>
+                <button type="submit" className={styles.submitBtn} onClick={onLogin}>Login</button>
                 <br />
                 <a href="#" className={styles.link}>Forgot Password?</a>
+
+                {error && <p className={styles.error}>{error}</p>}
+                {success && <p className={styles.success}>{success}</p>}
 
             </div>
         </>

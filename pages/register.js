@@ -9,6 +9,7 @@ const Register = () => {
         <>
             <Header />
             <NavigationBar />
+            <RegisterForm />
             <Footer />
         </>
     )
