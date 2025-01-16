@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer"
 import AnswerCard from "@/components/AnswerCard/AnswerCard"
 import axios from "axios"
 import styles from "./styles.module.css"
+import AnswerForm from "@/components/AnswerForm/AnswerForm"
 
 const QuestionPage = () => {
     const [question, setQuestion] = useState(null);
@@ -69,6 +70,7 @@ const QuestionPage = () => {
                     </div>
                 </div>
             )}
+            <AnswerForm questionId={id} />
             <Footer />
         </div>
     );

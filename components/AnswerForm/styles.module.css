@@ -1,0 +1,55 @@
+.answer_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 50vh;
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 95%;
+    background-color: rgb(59, 30, 30);
+    color: white;
+    border-radius: 10px;
+
+}
+
+.question_wrapper textarea {
+    margin: 10px;
+    height: 4rem;
+    width: 30%;
+    font-size: 1.3rem;
+    color: black;
+    text-align: center;
+}
+
+.submitBtn {
+    margin: 10px;
+    padding: 5px;
+    height: 2rem;
+    width: 10rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #8d0124;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: white;
+    color: #800020;
+    scale: 110%;
+    transition: all 0.3s ease-in-out;
+}
+
+.submitBtn:active {
+    background-color: #800020;
+    color: white;
+    scale: 90%;
+    transition: all 0.2s ease-in-out;
+}
+
+.error {
+    color: red;
+}
