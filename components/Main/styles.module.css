@@ -4,9 +4,10 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: burlywood;
+    background-color: rgba(59, 30, 30, 0.945);
     width: 50%;
     margin: 0 auto;
     margin-top: 1rem;
     border-radius: 10px;
+    color: white;
 }

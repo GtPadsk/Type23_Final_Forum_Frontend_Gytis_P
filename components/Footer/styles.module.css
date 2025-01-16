@@ -1,13 +1,15 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    margin-top: auto;
+    text-align: center;
     padding: 10px;
-    background-color: burlywood;
-    width: 50%;
-    height: 10vh;
+    background-color: rgba(59, 30, 30, 0.39);
+    width: 20%;
+    height: 2vh;
     margin: 0 auto;
     margin-top: 1rem;
     border-radius: 10px;
+    color: white;
 }

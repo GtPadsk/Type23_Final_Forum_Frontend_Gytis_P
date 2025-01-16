@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import cookie from 'js-cookie';
 import axios from 'axios'
-import styles from "@/components/LoginForm/styles.module.css"
+import styles from "./styles.module.css"
 import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
@@ -34,7 +33,6 @@ const LoginForm = () => {
             console.log("Login response received", response)
 
             if (response.status === 200 || response.status === 201) {
-                cookie.set("token", response.data.token)
                 setSuccess("Login successful! Redirecting...")
                 setError("")
                 setTimeout(() => router.push("/"), 1000)

@@ -5,8 +5,7 @@ const QuestionCard = ({ question }) => {
     return (
         <div className={styles.card}>
             <p>{question.question_text}</p>
-        </div>
-    );
+        </div>);
 };
 
 export default QuestionCard;
