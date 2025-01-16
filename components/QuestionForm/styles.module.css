@@ -8,11 +8,11 @@
     width: 100%;
 }
 
-.question {
+.question_wrapper textarea {
     margin: 10px;
     height: 4rem;
-    width: 80%;
-    font-size: 1.1rem;
+    width: 30%;
+    font-size: 1.3rem;
     color: black;
     text-align: center;
 }

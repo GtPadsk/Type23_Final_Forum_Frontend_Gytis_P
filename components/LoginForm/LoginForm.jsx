@@ -26,13 +26,16 @@ const LoginForm = () => {
                 password: password,
             }
 
-            console.log("Attempting login with:", userData);
+            // console.log("Attempting login with:", userData);
 
             const response = await axios.post(`${process.env.NEXT_PUBLIC_LOGIN_PORT}`, userData)
 
-            console.log("Login response received", response)
+            // console.log("Login response received", response)
 
             if (response.status === 200 || response.status === 201) {
+                const { token } = response.data
+                localStorage.setItem("token", token)
+                console.log("Token saved:", token)
                 setSuccess("Login successful! Redirecting...")
                 setError("")
                 setTimeout(() => router.push("/"), 1000)
@@ -43,7 +46,7 @@ const LoginForm = () => {
             }
 
         } catch (error) {
-            console.error("Error logging in:", error.response ? error.response.data : error.message)
+            // console.error("Error logging in:", error.response ? error.response.data : error.message)
             setError("Login failed, try again please.")
         }
     }

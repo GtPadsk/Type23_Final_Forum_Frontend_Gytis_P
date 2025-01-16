@@ -12,10 +12,10 @@ const Main = () => {
         const fetchQuestions = async () => {
             try {
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_GET_QUESTIONS_PORT}`)
-                console.log("Backend response:", response.data)
+                // console.log("Backend response:", response.data)
                 if (Array.isArray(response.data.questions)) {
                     setQuestions(response.data.questions)
-                    console.log("Questions state updated:", response.data.questions)
+                    // console.log("Questions state updated:", response.data.questions)
                 } else {
                     console.error("Unexpected response format:", response.data)
                 }
@@ -23,8 +23,9 @@ const Main = () => {
                 console.error("Error fetching questions:", error)
             }
         }
-
-        fetchQuestions()
+        useEffect(() => {
+            fetchQuestions();
+        }, []);
     }, [])
 
     return (
@@ -34,7 +35,7 @@ const Main = () => {
             <div className={styles.cardContainer}>
                 {questions.length > 0 ? (
                     questions.map((question) => (
-                        console.log("Rendering question:", question),
+                        // console.log("Rendering question:", question),
                         <QuestionCard key={question._id} question={question} />))
                 ) : (
                     <p>No questions available</p>
