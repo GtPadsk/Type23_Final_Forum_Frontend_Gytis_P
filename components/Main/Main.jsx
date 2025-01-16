@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import QuestionForm from "../QuestionForm/QuestionForm";
 import QuestionCard from "../QuestionCard/QuestionCard";
-import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 

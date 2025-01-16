@@ -4,7 +4,7 @@ import NavigationBar from "@/components/NavigationBar/NavigationBar";
 import Main from '@/components/Main/Main'
 import Footer from '@/components/Footer/Footer'
 
-const index = () => {
+const Index = () => {
   return (
     <>
       <Header />
@@ -15,4 +15,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

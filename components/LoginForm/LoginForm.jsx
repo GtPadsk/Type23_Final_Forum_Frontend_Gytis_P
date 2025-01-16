@@ -9,6 +9,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const [logoutMessage, setLogoutMessage] = useState('')
 
     const router = useRouter()
 
@@ -50,6 +51,11 @@ const LoginForm = () => {
             setError("Login failed, try again please.")
         }
     }
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setLogoutMessage('Successfully logged out!')
+        router.push('/login');
+    };
 
     return (
         <>
@@ -68,13 +74,23 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />
-                <button type="submit" className={styles.submitBtn} onClick={onLogin}>Login</button>
-                <br />
-                <a href="#" className={styles.link}>Forgot Password?</a>
-
                 {error && <p className={styles.error}>{error}</p>}
                 {success && <p className={styles.success}>{success}</p>}
-
+                {logoutMessage && <p className={styles.success}>{logoutMessage}</p>}
+                <br />
+                <button
+                    type="submit"
+                    className={styles.submitBtn}
+                    onClick={onLogin}
+                >Login</button>
+                <br />
+                <button
+                    type="button"
+                    onClick={handleLogout}
+                    className={styles.submitBtn}
+                >Logout</button>
+                <br />
+                <a href="#" className={styles.link}>Forgot Password?</a>
             </div>
         </>
 

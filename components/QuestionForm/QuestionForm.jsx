@@ -34,6 +34,13 @@ const QuestionForm = () => {
 
         } catch (error) {
             console.error("Error posting question:", error)
+
+            if (error.response && error.response.status === 401) {
+                setAuthError("You must log in to post a question.")
+            } else {
+                console.error("Error posting question:", error)
+            }
+
         }
     }
     return (
