@@ -4,9 +4,11 @@ import QuestionForm from "../QuestionForm/QuestionForm";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Main = () => {
     const [questions, setQuestions] = useState([])
+    const router = useRouter()
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -23,10 +25,12 @@ const Main = () => {
                 console.error("Error fetching questions:", error)
             }
         }
-        useEffect(() => {
-            fetchQuestions();
-        }, []);
-    }, [])
+        fetchQuestions();
+    }, []);
+
+    const questionClick = (id) => {
+        router.push(`/question/${id}`)
+    }
 
     return (
         <div className={styles.main}>
@@ -35,8 +39,13 @@ const Main = () => {
             <div className={styles.cardContainer}>
                 {questions.length > 0 ? (
                     questions.map((question) => (
-                        // console.log("Rendering question:", question),
-                        <QuestionCard key={question._id} question={question} />))
+                        <div
+                            key={question._id}
+                            className={styles.clickableCard}
+                            onClick={() => questionClick(question._id)}
+                        >
+                            <QuestionCard question={question} />
+                        </div>))
                 ) : (
                     <p>No questions available</p>
                 )}

@@ -43,3 +43,7 @@
     scale: 90%;
     transition: all 0.2s ease-in-out;
 }
+
+.error {
+    color: red;
+}

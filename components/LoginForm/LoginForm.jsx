@@ -41,8 +41,8 @@ const LoginForm = () => {
                 setTimeout(() => router.push("/"), 1000)
                 return
             } else {
-                console.log("Login failed with status:", response.status)
-                setError("Login failed, try again please.")
+                // console.log("Login failed with status:", response.status)
+                setError("Invalid email or password")
             }
 
         } catch (error) {

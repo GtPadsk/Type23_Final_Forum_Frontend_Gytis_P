@@ -2,29 +2,36 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
 
-const QuestionForm = ({ refreshQuestions }) => {
+const QuestionForm = () => {
     const [question, setQuestion] = useState("");
+    const [authError, setAuthError] = useState("")
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        setAuthError("")
+
         try {
             const token = localStorage.getItem("token");
+
             if (!token) {
-                throw new Error("No auth token found");
+                setAuthError("You must log in to post a question.")
+                return
             }
-            console.log("Using token:", token)
+
+            // console.log("Using token:", token)
             const response = await axios.post(
                 `${process.env.NEXT_PUBLIC_POST_QUESTION_PORT}`,
                 { question_text: question },
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
                     },
                 }
             )
             console.log("Question posted successfully:", response.data)
             setQuestion("")
-            refreshQuestions()
+
         } catch (error) {
             console.error("Error posting question:", error)
         }
@@ -39,6 +46,7 @@ const QuestionForm = ({ refreshQuestions }) => {
                 required
             ></textarea>
             <button type="submit" className={styles.submitBtn}>Submit</button>
+            {authError && <p className={styles.error}>{authError}</p>}
         </form>
     )
 }

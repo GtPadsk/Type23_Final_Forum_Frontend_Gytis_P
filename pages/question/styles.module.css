@@ -1,4 +1,4 @@
-.main {
+.wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,12 +6,9 @@
     padding: 10px;
     background-color: rgb(59, 30, 30);
     width: 95%;
+    height: 50vh;
     margin: 0 auto;
     margin-top: 1rem;
     border-radius: 10px;
     color: white;
-}
-
-.clickableCard {
-    cursor: pointer;
 }
