@@ -6,7 +6,9 @@ const Header = () => {
     return (
         <>
             <div className={styles.wrapper}>
-                <h1 className={styles.logo}><Link className={styles.logo} href="/">Ask.it</Link></h1>
+                <h1 className={styles.logo}>
+                    <Link className={styles.logo} href="/">Ask.it</Link>
+                </h1>
                 <p>Ask a question, or answer one.</p>
             </div>
         </>

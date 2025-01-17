@@ -27,11 +27,9 @@ const LoginForm = () => {
                 password: password,
             }
 
-            // console.log("Attempting login with:", userData);
 
             const response = await axios.post(`${process.env.NEXT_PUBLIC_LOGIN_PORT}`, userData)
 
-            // console.log("Login response received", response)
 
             if (response.status === 200 || response.status === 201) {
                 const { token } = response.data
@@ -42,12 +40,10 @@ const LoginForm = () => {
                 setTimeout(() => router.push("/"), 1000)
                 return
             } else {
-                // console.log("Login failed with status:", response.status)
                 setError("Invalid email or password")
             }
 
         } catch (error) {
-            // console.error("Error logging in:", error.response ? error.response.data : error.message)
             setError("Login failed, try again please.")
         }
     }
